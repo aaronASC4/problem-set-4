@@ -21,9 +21,29 @@
 public class ProblemSet4 {
 	
 	public static void main(String[] args) {
+		ProblemSet4 ps = new ProblemSet4();
+		
+		//ps.testSurroundMe();
+		ps.testEndsMeet();
 		
 	}
 	
+	/*private void testSurroundMe() {
+		surroundMe("AABB", "XYZ");
+		surroundMe("<<>>", "abc");
+		surroundMe("[[]]", "xyz");
+		surroundMe("abc", "abc");
+		surroundMe("(())", "qwerty");
+	}*/
+	private void testEndsMeet() {
+		endsMeet("qwerty", 2);
+		endsMeet("basketball", 3);
+		endsMeet("qwerty", -1);
+		endsMeet("basketball", 0);
+		endsMeet("qwerty", 9);
+		endsMeet("programming", 2);
+		endsMeet(null, 1);
+	}
 	/**
 	 * @surroundMe is a public method that accepts two Strings as input, and
 	 * returns a single String as output.
@@ -38,8 +58,16 @@ public class ProblemSet4 {
 	 * @return a String constructed from @in and @out of the format AAXYZBB
 	 */
 	
-	// your method signature here
-	
+	public String surroundMe(String out, String in) {
+		int out_len = out.length();
+		int in_len = in.length();
+		if(out_len == 4 && in_len == 3) {
+		String x = out.substring(0,2) + in + out.substring(2);
+		return x;
+		} else {
+			return null;
+} 
+	}
 	/**
 	 * @endsMeet is a public method that accepts a String and an integer as input, and
 	 * returns a single String as output.
@@ -54,7 +82,17 @@ public class ProblemSet4 {
 	 * @return a String constructed from the first @n and last @n characters of @str
 	 */
 	
-	// your method signature here
+	public String endsMeet(String str, int n) {
+		int str_len = str.length();
+		if(n < 0) {
+		String x = str.substring(0, n) + str.substring(str_len - n);
+		if((str_len <= 10 && str_len >= 1) && (n >= 1 && n <= str_len)) {
+			System.out.println(x);
+			return x;
+		} else {
+			return null;
+		}
+	}
 	
 	/**
 	 * @middleMan is a public method that accepts a single String as input, and
