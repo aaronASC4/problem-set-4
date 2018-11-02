@@ -83,17 +83,15 @@ public class ProblemSet4 {
 	 */
 	
 	public String endsMeet(String str, int n) {
-		int str_len = str.length();
-		if(n < 0) {
-		String x = str.substring(0, n) + str.substring(str_len - n);
-		if((str_len <= 10 && str_len >= 1) && (n >= 1 && n <= str_len)) {
-			System.out.println(x);
+		int strLen = str.length();
+		if((strLen <= 10 && strLen >= 1) && (n >= 1 && n <= strLen)) {
+			String x = str.substring(0, n) + str.substring(strLen - n);
 			return x;
 		} else {
 			return null;
 		}
-	}
-	
+
+	}	
 	/**
 	 * @middleMan is a public method that accepts a single String as input, and
 	 * returns a single String as output.
@@ -107,7 +105,16 @@ public class ProblemSet4 {
 	 * @return a 3-character String constructed from the middle 3 characters of @str
 	 */
 	
-	// your method signature here
+	public String middleMan(String str) {
+		int strLen = str.length();
+		String middle = str.substring(strLen / 2 - 1, strLen / 2 + 2);
+		
+		if (strLen % 2 == 0) {
+			return middle;
+		} else {
+			return null;
+		}
+	}
 	
 	/**
 	 * @doubleVision is a public method that accepts a single String as input, and
@@ -122,7 +129,17 @@ public class ProblemSet4 {
 	 * @return a String where each character in @str is duplicated in the format AABBCC
 	 */
 	
-	// your method signature here
+	public String doubleVision(String str) {
+		if (str == null) {
+			return null;
+		}
+		String result = "";
+		for (int i = 0; i < str.length(); i++) {
+			String a1 = str.substring(i, i+1);
+			result  = result + a1 + a1;
+		}
+		return result;
+	}
 	
 	/**
 	 * @centered is a public method that accepts a single String as input, and
@@ -139,7 +156,18 @@ public class ProblemSet4 {
 	 * @return true if @target is in the middle of @str and false if it is not
 	 */
 	
-	// your method signature here
+	public boolean centered(String str, String target) {
+		if(str == null || target == null) {
+			return false;
+		}
+		int strLength = str.length();
+		String middle3 = str.substring(strLength/2 - 1, strLength/2 + 2);
+		if(target == middle3) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * @upOrDown is a public method that accepts a decimal value and a character as
@@ -155,7 +183,20 @@ public class ProblemSet4 {
 	 * @return the result of the operation as an @int
 	 */
 	
-	// your method signature here
+	public Integer upOrDown(double n, char c) {
+		if (c == 'r') {
+			return (int) Math.round(n);
+		}
+		if (c == 'f') {
+			return (int) Math.floor(n);
+		}
+		if (c == 'c') {
+			return (int) Math.ceil(n);
+		}
+		else {
+			return -1;
+		}
+	}
 	
 	/**
 	 * @countMe is a public method that accepts a String and a character as input,
