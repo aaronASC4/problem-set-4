@@ -214,7 +214,35 @@ public class ProblemSet4 {
 	 * @return the number of words in @text that end with @end
 	 */
 	
-	// your method signature here
+/*	public Integer countMe(String text, char end) {
+		 int occ = 0, i; 
+	       
+	        // If given count is 0 
+	        // print the given string and return 
+	        if (count == 0) { 
+	            System.out.println(text); 
+	            return; 
+	        } 
+	       
+	        // Start traversing the string 
+	        for (i = 0; i < text.length(); i++) { 
+	       
+	            // Increment occ if current char is equal 
+	            // to given character 
+	            if (text.charAt(i) == end) 
+	                occ++; 
+	       
+	            // Break the loop if given character has 
+	            // been occurred given no. of times 
+	            if (occ == count) 
+	                break; 
+	        } 
+	       
+	        // Print the string after the occurrence 
+	        // of given character given no. of times 
+	        if (i < str.length() - 1) 
+	            System.out.println(str.substring(i + 1)); 
+	} */
 	
 	/**
 	 * @isNotEqual is a public method that accepts a String as input, and
