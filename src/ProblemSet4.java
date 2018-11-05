@@ -214,35 +214,28 @@ public class ProblemSet4 {
 	 * @return the number of words in @text that end with @end
 	 */
 	
-/*	public Integer countMe(String text, char end) {
-		 int occ = 0, i; 
-	       
-	        // If given count is 0 
-	        // print the given string and return 
-	        if (count == 0) { 
-	            System.out.println(text); 
-	            return; 
-	        } 
-	       
-	        // Start traversing the string 
-	        for (i = 0; i < text.length(); i++) { 
-	       
-	            // Increment occ if current char is equal 
-	            // to given character 
-	            if (text.charAt(i) == end) 
-	                occ++; 
-	       
-	            // Break the loop if given character has 
-	            // been occurred given no. of times 
-	            if (occ == count) 
-	                break; 
-	        } 
-	       
-	        // Print the string after the occurrence 
-	        // of given character given no. of times 
-	        if (i < str.length() - 1) 
-	            System.out.println(str.substring(i + 1)); 
-	} */
+	public int countMe(String text, char end) {
+		int count = 0;
+		String endCheck; 
+		if (text == null || "" + end == null) {
+			return -1;
+		}
+		if (text.length() == 0 || Character.isLetter(end) == false) {
+			return -1;
+		} 
+		for (int i = 0; i < text.length(); i++) {
+			if (i == (text.length() -1)) {
+				endCheck = text.substring(i);
+			}
+			else {
+				endCheck = text.substring(i, i + 2);
+			}
+			if (endCheck.equals(end + " ") || endCheck.equals(end + "\n")) {
+				count++;
+			}
+		}
+			return count;
+	}
 	
 	/**
 	 * @isNotEqual is a public method that accepts a String as input, and
@@ -257,7 +250,32 @@ public class ProblemSet4 {
 	 * @return true if the appearances of is == the appearances of not; false otherwise
 	 */
 	
-	// your method signature here
+	public boolean isNotEqual(String str) {
+		int isCheck = 0;
+		int notCheck = 0; 
+		if (str == null) {
+			return false;
+		}
+		if (str.length() == 0) {
+			return false;
+		}
+		for (int i = 0; i < str.length() - 1; i++) {
+			if (str.substring(i, i + 2).equals("is")) {
+				isCheck++;
+			}
+			else if (i < str.length() - 2) {
+				if (str.substring(i, i + 3).equals("not")) {
+					notCheck++;
+				}
+			}
+		}
+		if (isCheck == notCheck) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	/**
 	 * @triplets is a public method that accepts a single String as input, and
@@ -273,7 +291,26 @@ public class ProblemSet4 {
 	 * @return the number of triplets in @str
 	 */
 	
-	// your method signature here
+	public int triplets(String str) {
+		int tripCheck = 0;
+		if (str == null) {
+			return -1;
+		}
+		if (str.length() == 0) {
+			return -1;
+		}
+		for (int i = 0; i < str.length() - 2; i++) {
+			if (str.charAt(i) == str.charAt(i + 1)) {
+				if (str.charAt(i) == str.charAt(i + 2)) {
+					tripCheck++;
+				}
+			}
+			else if (!Character.isAlphabetic(str.charAt(i))) {
+				return -1;
+			}
+		}
+		return tripCheck;
+	}
 	
 	/**
 	 * @addMe is a public method that accepts a String and a boolean as input, and
@@ -290,5 +327,36 @@ public class ProblemSet4 {
 	 * @return the sum of the digits or numbers as specified by @digits
 	 */
 	
-	// your method signature here
+	public int addMe(String str, boolean digits) {
+		int sum = 0;
+		if (str == null) {
+			return -1;
+		}
+		if (digits) {
+			for (int i = 0; i < str.length(); i++) {
+				if (Character.isDigit(str.charAt(i))) {
+					sum += Character.getNumericValue(str.charAt(i));
+				}
+			}
+		}
+		else { 
+			int check = 0;
+			for (int i = 0; i < str.length(); i++) {
+				if (Character.isDigit(str.charAt(i))) {
+					check *= 10;
+					check += Character.getNumericValue(str.charAt(i));;
+				}
+				else if (!Character.isAlphabetic(str.charAt(i))) {
+					return -1;
+				}
+				else {
+					sum += check;
+					check = 0;
+				}
+			}
+			sum += check;
+		}
+		return sum;
+	}
+}
 }
